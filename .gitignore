@@ -1,5 +1,4 @@
 # Ambientes virtuais
-venv/
 .venv/
 
 # Arquivos de ambiente (chaves)
