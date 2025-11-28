@@ -31,4 +31,3 @@ if __name__ == "__main__":
    app()
 
 
-# [] Adicionar descrição no HELP para descrever os comandos

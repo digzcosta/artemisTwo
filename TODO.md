@@ -6,3 +6,6 @@
 [ ] Criar subcomandos (`artemis fetch`, `artemis show`)
 
 [ ] Implementar autocomplete global
+
+## Logs
+[ ] Adicionar .gitkeep à pasta de logs/
