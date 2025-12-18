@@ -3,6 +3,8 @@ from rich import print
 from typing_extensions import Annotated
 from src.api.adzuna_client import search_jobs
 from src.logger import log
+from src.services.job_mapper import cleaning_dict_jobs
+from src.services.job_service import save_job
 
 app = typer.Typer()
 
@@ -33,11 +35,19 @@ def fetch(term: Annotated[str, typer.Argument()] = ""):
     print(f"[cyan]Found {count} jobs.[/cyan]")
 
     results = data.get("results", [])
-    if results:
-        first = results[0]
-        print("\n[bold yellow]First result:[/bold yellow]")
-        print(first.get("title"))
-        print(first.get("location", {}).get("display_name"))
+    
+    saved = 0
+    ignored = 0
+
+    for job_json in results:
+        cleaned = cleaning_dict_jobs(job_json)
+        if save_job(cleaned):
+            saved += 1
+        else:
+            ignored += 1
+
+    print(f"[green]Saved jobs:[/green] {saved}")
+    print(f"[yellow]Ignored duplicates:[/yellow] {ignored}")
 
 
 @app.command(help="Display saved jobs (Mark 2 feature).")
