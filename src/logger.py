@@ -1,3 +1,5 @@
+# Definition of log messages and creation of the file to store logs.
+
 from loguru import logger
 import sys
 from src.config import DEBUG

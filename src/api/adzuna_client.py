@@ -1,3 +1,6 @@
+# Integration layer with the Adzuna API. 
+# Returns raw data on job vacancies.
+
 import requests
 from src.config import adzuna_app_id, adzuna_app_key
 from src.logger import log

@@ -1,18 +1,18 @@
-# Ambientes virtuais
+# Virtual environment
 .venv/
 
-# Arquivos de ambiente (chaves)
+# Environment files (keys)
 .env
 
-# Banco de dados e dados locais
+# Database and local data
 data/
 *.db
 
-# Cache do Python
+# Python cache
 __pycache__/
 *.pyc
 
-# Pastas do VSCode
+# Vscode folders
 .vscode/
 
 # Logs

@@ -1,3 +1,5 @@
+# Function responsible for cleaning data. Receives raw data (json format).
+
 from datetime import datetime
 
 

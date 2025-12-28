@@ -1,3 +1,6 @@
+# Initialization of the CLI and definition of the main commands “fetch” and “show”, 
+# connecting them to functions for data processing and display.
+
 import typer
 from rich import print
 from typing_extensions import Annotated
@@ -5,6 +8,8 @@ from src.api.adzuna_client import search_jobs
 from src.logger import log
 from src.services.job_mapper import cleaning_dict_jobs
 from src.services.job_service import save_job
+from src.services.job_service import show_jobs
+
 
 app = typer.Typer()
 
@@ -50,10 +55,12 @@ def fetch(term: Annotated[str, typer.Argument()] = ""):
     print(f"[yellow]Ignored duplicates:[/yellow] {ignored}")
 
 
-@app.command(help="Display saved jobs (Mark 2 feature).")
+@app.command(help="Display saved jobs.")
 def show():
-    print("[bold yellow]Showing saved jobs...[/bold yellow]")
-    print("[italic]→ Feature coming in Mark 2.[/italic]")
+    print(f"[green] Jobs stored in local database[/green]")
+    print(f"[green] Showing all saved entries[/green]")
+    print()
+    show_jobs()
     
 
 if __name__ == "__main__":

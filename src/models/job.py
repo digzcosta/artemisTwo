@@ -1,3 +1,5 @@
+# Creation of the table model to store in the database, based on the API's receiving parameters.
+
 from src.database.connection import Base, engine
 from sqlalchemy import Column, Integer, String, Float, DateTime
 
@@ -13,5 +15,3 @@ class Job(Base):
     created_at = Column(DateTime)
     url = Column(String, unique=True, nullable=False)
 
-# Mover para main.py
-Base.metadata.create_all(engine)
