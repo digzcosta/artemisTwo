@@ -4,33 +4,41 @@
 import typer
 from rich import print
 from typing_extensions import Annotated
+from src.database.init_db import init_db
 from src.api.adzuna_client import search_jobs
 from src.logger import log
 from src.services.job_mapper import cleaning_dict_jobs
 from src.services.job_service import save_job
 from src.services.job_service import show_jobs
 
+init_db()
 
 app = typer.Typer()
 
 @app.command(help="Fetch job listings using a search term.")
-def fetch(term: Annotated[str, typer.Argument()] = ""):
+def fetch(
+    term: Annotated[str, typer.Argument()], 
+    limit: Annotated[int, typer.Option(
+        "--limit",
+        "-l",
+        help="Number of job results to fetch (min 1, max 50).")] = 10):
+    
+
+    if limit < 1 or limit > 50:
+        print("[bold red]--limit must be between 1 and 50.[/bold red]")
+        raise typer.Exit(code=1)
+    
     
     term = term.strip()
-
-    if not term:
-        print("[bold red]Please provide a job title or keyword.[/bold red]")
-        raise typer.Exit(code=1)
     
     if len(term) < 2:
         print("[bold red]Keyword must have at least 2 characters.[/bold red]")
-        raise typer.Exit(code=1)
-    
+        raise typer.Exit(code=1)   
      
     print(f'[bold]Searching for "[bold green]{term}[/bold green]"...[/bold]')
     log.info("CLI fetch started with term={}", term)
 
-    data = search_jobs(term)
+    data = search_jobs(term=term, limit=limit)
 
     if not data:
         print("[bold red]API request failed or returned no data.[/bold red]")
@@ -65,5 +73,4 @@ def show():
 
 if __name__ == "__main__":
    app()
-
 

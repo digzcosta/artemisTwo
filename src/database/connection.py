@@ -11,5 +11,3 @@ engine = create_engine(DATABASE_URL, echo=False)
 Base = declarative_base()
 
 SessionLocal = sessionmaker(bind=engine)
-
-Base.metadata.create_all(engine)

@@ -1,6 +1,6 @@
 # Creation of the table model to store in the database, based on the API's receiving parameters.
 
-from src.database.connection import Base, engine
+from src.database.connection import Base
 from sqlalchemy import Column, Integer, String, Float, DateTime
 
 class Job(Base):
@@ -14,4 +14,5 @@ class Job(Base):
     salary = Column(Float)
     created_at = Column(DateTime)
     url = Column(String, unique=True, nullable=False)
+
 

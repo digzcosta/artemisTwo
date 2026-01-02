@@ -7,14 +7,15 @@ from src.logger import log
 
 base_url = "https://api.adzuna.com/v1/api/jobs"
 
-def search_jobs(term: str, page: int = 1, country: str = "br") -> dict | None:
+def search_jobs(term: str, limit: int = 10, page: int = 1, country: str = "br") -> dict | None:
     
     url = f"{base_url}/{country}/search/{page}"
     
     params = {
         "app_id": adzuna_app_id,
         "app_key": adzuna_app_key,
-        "what": term
+        "what": term,
+        "results_per_page": limit
     }
 
     log.info("Requesting Adzuna: term={} page={}", term, page)
