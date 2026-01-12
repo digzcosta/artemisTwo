@@ -52,7 +52,7 @@ def show_jobs():
 
 
 
-def get_jobs_dataframe():
+def export_jobs_to_csv():
     session = SessionLocal()
     try:
         results = (
@@ -86,11 +86,12 @@ def get_jobs_dataframe():
             ]
         )
 
+        # Creating path to save the CSV files
         folder_path = os.path.join(os.getcwd(), 'exports/powerbi')
         if not os.path.exists(folder_path):
             os.makedirs(folder_path)
         
-        date_suffix = datetime.now().strftime("_%d%m%Y_%H%M")
+        date_suffix = datetime.now().strftime("_%d%m%Y_%H%M%S")
         original_filename = "jobs.csv"
         new_filename = original_filename.replace('.csv', f"{date_suffix}.csv")
 

@@ -10,6 +10,7 @@ from src.logger import log
 from src.services.job_mapper import cleaning_dict_jobs
 from src.services.job_service import save_job
 from src.services.job_service import show_jobs
+from src.services.job_service import export_jobs_to_csv
 
 init_db()
 
@@ -67,9 +68,19 @@ def fetch(
 def show():
     print(f"[green] Jobs stored in local database[/green]")
     print(f"[green] Showing all saved entries[/green]")
-    print()
     show_jobs()
+
+
+@app.command(help="Export job data from the database to a CSV file compatible with Power BI.")
+def export_powerbi():
+    output_path = export_jobs_to_csv()
     
+    if output_path is None:
+        print('[bold][red]No data available to export.[/red][/bold]')
+        raise typer.Exit(code=1)
+    else:
+        print(f'[bold][green]Export completed. CSV saved at: [/bold][/green]{output_path}')
+
 
 if __name__ == "__main__":
    app()
