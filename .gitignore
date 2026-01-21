@@ -5,7 +5,8 @@
 .env
 
 # Database and local data
-data/
+data/*
+!data/.gitkeep
 *.db
 
 # Python cache
@@ -18,7 +19,7 @@ __pycache__/
 # Logs
 *.log
 
-# CSV generated reports
-exports/powerbi
+# Generated CSV
+*.csv
 
 **/.DS_Store
