@@ -1,16 +1,15 @@
-### Dashboard (Power BI)
+Dashboard (Power BI)
+	1.	Generate the CSV files using the CLI command export-powerbi
+	2.	Open Power BI Desktop
+	3.	Open the dashboard template located at:
+templates/powerbi/artemis_powerbi_template.pbit
+	4.	When prompted, select the folder:
+exports/powerbi/
+	5.	Wait for the dashboard to load
+	6.	To refresh the data after generating new CSV files:
+	•	Go to Home → Refresh
+	•	Use only the default option (Refresh / Data)
 
-1. Gere os arquivos CSV usando o comando CLI `export-powerbi`
-2. Abra o Power BI Desktop
-3. Abra o template do dashboard em:
-   `templates/powerbi/artemis_powerbi_template.pbit`
-4. Quando solicitado, selecione a pasta:
-   `exports/powerbi/`
-5. Aguarde o carregamento do dashboard
-6. Para atualizar os dados após gerar novos CSVs:
-   - Vá em Home → Refresh
-   - Utilize apenas a opção padrão (Refresh / Data)
-
-⚠️ Não utilize as opções "Schema" ou "Data + Schema".
-Essas opções podem gerar avisos de parâmetros e não são necessárias
-para o funcionamento do dashboard.
+⚠️ Do not use the “Schema” or “Data + Schema” options.
+These options may trigger parameter warnings and are not required
+for the dashboard to function correctly.
