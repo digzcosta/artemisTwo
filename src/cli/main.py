@@ -1,4 +1,4 @@
-# Initialization of the CLI and definition of the main commands “fetch” and “show”, 
+# Initialization of the CLI and definition of the main commands “fetch”, “show” and "export-powerbi", 
 # connecting them to functions for data processing and display.
 
 import typer

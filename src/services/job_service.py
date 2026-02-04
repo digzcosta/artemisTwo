@@ -68,7 +68,7 @@ def export_jobs_to_csv():
             )
             .all()
         ) 
-        # Ajustar isso para retornar no CLI as mensagens
+        
         if not results:
             return None
 
@@ -86,7 +86,6 @@ def export_jobs_to_csv():
             ]
         )
 
-        # Creating path to save the CSV files
         folder_path = os.path.join(os.getcwd(), 'exports/powerbi')
         if not os.path.exists(folder_path):
             os.makedirs(folder_path)
